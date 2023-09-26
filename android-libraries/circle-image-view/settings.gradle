@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "circle-image-view-library"
 include ':app'
+include ':app'
