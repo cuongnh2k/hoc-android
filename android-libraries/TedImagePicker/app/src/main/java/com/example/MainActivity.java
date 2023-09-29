@@ -15,7 +15,7 @@ import com.gun0912.tedpermission.normal.TedPermission;
 import java.io.IOException;
 import java.util.List;
 
-import gun0912.tedbottompicker.TedBottomPicker;
+import gun0912.tedimagepicker.builder.TedImagePicker;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         btnSelectPhoto = findViewById(R.id.btn_select_photo);
         imageView = findViewById(R.id.image_view);
         btnSelectPhoto.setOnClickListener(view -> requestPermissions());
-
     }
 
     private void requestPermissions() {
@@ -37,12 +36,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPermissionGranted() {
                 Toast.makeText(MainActivity.this, "Permission Granted", Toast.LENGTH_SHORT).show();
-//                new TedBottomPicker.Builder(MainActivity.this)
-//                        .setOnImageSelectedListener(uri -> {
-//                        })
-//                        .create().show(getSupportFragmentManager());
-                TedBottomPicker.with(null)
-                        .show(uri -> {
+                TedImagePicker.with(MainActivity.this)
+                        .start(uri -> {
                             try {
                                 imageView.setImageBitmap(MediaStore.Images.Media.getBitmap(getContentResolver(), uri));
                             } catch (IOException e) {
