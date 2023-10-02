@@ -1,6 +1,7 @@
 package com.example;
 
 import android.Manifest;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.Button;
@@ -8,27 +9,37 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import gun0912.tedimagepicker.builder.TedImagePicker;
 
 
 public class MainActivity extends AppCompatActivity {
-    Button btnSelectPhoto;
-    ImageView imageView;
+    Button btnSelectImage;
+    RecyclerView rcvPhoto;
+    private PhotoAdapter photoAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnSelectPhoto = findViewById(R.id.btn_select_photo);
-        imageView = findViewById(R.id.image_view);
-        btnSelectPhoto.setOnClickListener(view -> requestPermissions());
+        btnSelectImage = findViewById(R.id.btn_select_image);
+        rcvPhoto = findViewById(R.id.rcv_photo);
+        photoAdapter = new PhotoAdapter(this);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 10, LinearLayoutManager.VERTICAL, false);
+        rcvPhoto.setLayoutManager(gridLayoutManager);
+        rcvPhoto.setFocusable(false);
+        rcvPhoto.setAdapter(photoAdapter);
+        btnSelectImage.setOnClickListener(view -> requestPermissions());
     }
 
     private void requestPermissions() {
@@ -37,12 +48,8 @@ public class MainActivity extends AppCompatActivity {
             public void onPermissionGranted() {
                 Toast.makeText(MainActivity.this, "Permission Granted", Toast.LENGTH_SHORT).show();
                 TedImagePicker.with(MainActivity.this)
-                        .start(uri -> {
-                            try {
-                                imageView.setImageBitmap(MediaStore.Images.Media.getBitmap(getContentResolver(), uri));
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
+                        .startMultiImage(uriList -> {
+                            photoAdapter.setData((ArrayList<Uri>) uriList);
                         });
             }
 

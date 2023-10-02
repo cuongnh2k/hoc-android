@@ -19,18 +19,19 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
     private Context mContext;
     private ArrayList<Uri> mListPhotos;
 
-    public PhotoAdapter(Context context) {
-        this.mContext = context;
+    public PhotoAdapter(Context mContext) {
+        this.mContext = mContext;
     }
 
     public void setData(ArrayList<Uri> list) {
         this.mListPhotos = list;
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public PhotoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_photo, parent, false);
         return new PhotoViewHolder(view);
     }
 
@@ -55,7 +56,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
 
         public PhotoViewHolder(View itemView) {
             super(itemView);
-            this.imagePhoto = itemView.findViewById(R.id.image_view);
+            this.imagePhoto = itemView.findViewById(R.id.img_photo);
         }
     }
 }
