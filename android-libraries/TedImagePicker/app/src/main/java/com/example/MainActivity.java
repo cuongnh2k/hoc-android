@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         btnSelectImage = findViewById(R.id.btn_select_image);
         rcvPhoto = findViewById(R.id.rcv_photo);
         photoAdapter = new PhotoAdapter(this);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 10, LinearLayoutManager.VERTICAL, false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3, LinearLayoutManager.VERTICAL, false);
         rcvPhoto.setLayoutManager(gridLayoutManager);
         rcvPhoto.setFocusable(false);
         rcvPhoto.setAdapter(photoAdapter);
