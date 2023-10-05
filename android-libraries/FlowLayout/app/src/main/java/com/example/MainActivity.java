@@ -1,5 +1,6 @@
 package com.example;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mFlowLayout.findViewById(R.id.flow_layout);
+        mFlowLayout = findViewById(R.id.flow_layout);
         initData();
         setData();
     }
@@ -31,8 +32,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mListKeyword.add(new Keyword(1, "cuong"));
         mListKeyword.add(new Keyword(2, "nguyen"));
         mListKeyword.add(new Keyword(3, "huu"));
+        mListKeyword.add(new Keyword(4, "huu"));
+        mListKeyword.add(new Keyword(5, "huu"));
+        mListKeyword.add(new Keyword(6, "huu"));
+        mListKeyword.add(new Keyword(7, "huu"));
+        mListKeyword.add(new Keyword(8, "huu"));
     }
 
+    @SuppressLint("ResourceAsColor")
     private void setData() {
         if (mFlowLayout == null) {
             return;
@@ -50,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textView.setText(keyword.getName());
                 textView.setPadding(30, 10, 30, 10);
                 textView.setBackgroundResource(R.drawable.custom_layout_item);
-                textView.setTextColor(getResources().getColor(com.google.android.material.R.color.material_dynamic_primary10));
+                textView.setTextColor(R.color.black);
 
                 //set listener
                 textView.setOnClickListener(this);
