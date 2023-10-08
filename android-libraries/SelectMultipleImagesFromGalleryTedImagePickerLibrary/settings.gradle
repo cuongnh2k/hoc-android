@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "TebImagePicker"
+rootProject.name = "Select Multiple Images From Gallery Ted Image Picker Library"
 include ':app'
