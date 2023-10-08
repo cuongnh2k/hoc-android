@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "photo-view"
+rootProject.name = "Zoom Image View Using Photo View Library"
 include ':app'

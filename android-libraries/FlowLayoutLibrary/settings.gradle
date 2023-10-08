@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "FlowLayout"
+rootProject.name = "Flow Layout Library"
 include ':app'

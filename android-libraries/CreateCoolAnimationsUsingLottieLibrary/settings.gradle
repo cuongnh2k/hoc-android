@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Lottie"
+rootProject.name = "Create Cool Animations Using Lottie Library"
 include ':app'
