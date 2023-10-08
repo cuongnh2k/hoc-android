@@ -1,4 +1,4 @@
-package com.example.butterknife;
+package com.example;
 
 import android.content.Context;
 

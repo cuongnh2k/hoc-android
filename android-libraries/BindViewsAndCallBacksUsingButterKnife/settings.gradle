@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Butter Knife"
+rootProject.name = "Bind Views And Call Backs Using Butter Knife"
 include ':app'
