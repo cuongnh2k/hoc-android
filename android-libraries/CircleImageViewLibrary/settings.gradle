@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "circle-image-view-library"
+rootProject.name = "Circle Image View Library"
 include ':app'
 include ':app'
